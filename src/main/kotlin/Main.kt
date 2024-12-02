@@ -114,9 +114,9 @@ fun deleteProgram(){
     //logger.info { "deleteProgram() function invoked" }
     listPrograms()
     if (programController.numberOfPrograms() > 0) {
-        //only ask the user to choose the note to delete if notes exist
+        //only ask the user to choose the program to delete if notes exist
         val indexToDelete = readNextInt("Enter the index of the program to delete: ")
-        //pass the index of the note to NoteAPI for deleting and check for success.
+        //pass the index of the note to programController for deleting and check for success.
         val programToDelete = programController.deleteProgram(indexToDelete)
         if (programToDelete != null) {
             println("Delete Successful! Deleted note: ${programToDelete.programName}")
@@ -127,7 +127,7 @@ fun deleteProgram(){
 }
 
 fun addComputer() {
-    val computerName = readNextLine("Group Name: ")
+    val computerName = readNextLine("Computer Name: ")
     val operatingSystem = readNextLine("Operating System: ")
     val storage = readNextFloat("Storage: ")
     val computer = Computer(0, computerName, operatingSystem, storage)
@@ -138,11 +138,40 @@ fun listComputers() {
 }
 
 fun updateComputer() {
-    logger.info { "updateComputer function invoked" }
+    listComputers()
+    if (computerController.numberOfComputers() > 0) {
+
+        val indexToUpdate = readNextInt("Enter the index of the computer to update: ")
+        if (computerController.isValidIndex(indexToUpdate)) {
+            val computerName = readNextLine("Enter a name for the computer: ")
+            val operatingSystem = readNextLine("Enter the operating system for the computer: ")
+            val storage = readNextFloat("Enter the amount of storage: ")
+
+
+            if (computerController.updateComputer(indexToUpdate, Computer(indexToUpdate, computerName, operatingSystem, storage))){
+                println("Update Successful")
+            } else {
+                println("Update Failed")
+            }
+        } else {
+            println("There are no notes for this index number")
+        }
+    }
 }
 
 fun deleteComputer() {
-    logger.info { "deleteComputer function invoked" }
+    listComputers()
+    if (computerController.numberOfComputers() > 0) {
+
+        val indexToDelete = readNextInt("Enter the index of the computer to delete: ")
+
+        val computerToDelete = computerController.deleteComputer(indexToDelete)
+        if (computerToDelete != null) {
+            println("Delete Successful! Deleted computer: ${computerToDelete.computerName}")
+        } else {
+            println("Delete NOT Successful")
+        }
+    }
 }
 
 fun addComputerProgram() {
