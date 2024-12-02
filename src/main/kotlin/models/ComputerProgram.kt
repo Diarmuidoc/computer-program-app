@@ -1,6 +1,6 @@
 package models
 
-class ComputerProgram (
+data class ComputerProgram (
     var programId: Int,
     var computerId: Int
 )

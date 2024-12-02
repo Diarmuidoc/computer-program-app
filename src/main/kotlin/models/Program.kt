@@ -1,7 +1,7 @@
 package models
 
 
-class Program (
+data class Program(
     var programId: Int,
     var programName: String,
     var programSize: Float,
