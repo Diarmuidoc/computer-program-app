@@ -87,13 +87,43 @@ fun listPrograms(){
 }
 
 fun updateProgram(){
-    println("You chose Update Note")
-    logger.info { "updateProgram() function invoked" }
+    //logger.info { "updateProgram() function invoked" }
+    listPrograms()
+    if (programController.numberOfPrograms() > 0) {
+        //only ask the user to choose the note if a program exist
+        val indexToUpdate = readNextInt("Enter the index of the program to update: ")
+        if (programController.isValidIndex(indexToUpdate)) {
+            val programName = readNextLine("Enter a name for the program: ")
+            val programSize = readNextFloat("Enter the size for the program: ")
+            val programVersion = readNextLine("Enter the version of the Program: ")
+            val programId = indexToUpdate
+
+            //pass the index of the program and the new program details to the program controller for updating and check for success.
+            if (programController.updateProgram(indexToUpdate, Program(programId, programName, programSize, programVersion))){
+                println("Update Successful")
+            } else {
+                println("Update Failed")
+            }
+        } else {
+            println("There are no notes for this index number")
+        }
+    }
 }
 
 fun deleteProgram(){
-    println("You chose Delete Note")
-    logger.info { "deleteProgram() function invoked" }
+    //logger.info { "deleteProgram() function invoked" }
+    listPrograms()
+    if (programController.numberOfPrograms() > 0) {
+        //only ask the user to choose the note to delete if notes exist
+        val indexToDelete = readNextInt("Enter the index of the program to delete: ")
+        //pass the index of the note to NoteAPI for deleting and check for success.
+        val programToDelete = programController.deleteProgram(indexToDelete)
+        if (programToDelete != null) {
+            println("Delete Successful! Deleted note: ${programToDelete.programName}")
+        } else {
+            println("Delete NOT Successful")
+        }
+    }
 }
 
 fun addComputer() {
@@ -134,9 +164,10 @@ fun deleteComputerProgram() {
     logger.info { "deleteComputerProgram function invoked" }
 }
 
-
-
 fun exitApp(){
     println("Exiting...bye")
     exit(0)
 }
+
+
+
