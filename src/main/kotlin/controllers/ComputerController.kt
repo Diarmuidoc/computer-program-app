@@ -14,7 +14,9 @@ class ComputerController {
         computers.add(computer)
     }
 
-    fun listComputers() = computers
+    fun listComputers(): String =
+        if  (computers.isEmpty()) "No computers stored"
+        else formatListString(computers)
 
     fun numberOfComputers() = computers.size
 
@@ -46,5 +48,10 @@ class ComputerController {
     fun isValidIndex(index: Int) :Boolean{
         return isValidListIndex(index, computers);
     }
+
+    private fun formatListString(programsToFormat : List<Computer>) : String =
+        programsToFormat
+            .joinToString (separator = "\n") { computer ->
+                computers.indexOf(computer).toString() + ": " + computer.toString() }
 }
 
