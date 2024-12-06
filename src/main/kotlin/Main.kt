@@ -23,27 +23,28 @@ fun main() {
 fun mainMenu(): Int {
     print("""
           > -----------------------------------
-          > |      COMPUTER PROGRAM APP       |
+          > |      COMPUTER PROGRAM APP          |
           > -----------------------------------
-          > | PROGRAM MENU                    |
-          > |   1) Add a program              |
-          > |   2) List all programs          |
-          > |   3) Update a program           |
-          > |   4) Delete a program           |
+          > | PROGRAM MENU                       |
+          > |   1) Add a program                 |
+          > |   2) List all programs             |
+          > |   3) Update a program              |
+          > |   4) Delete a program              |
           > -----------------------------------
-          > | COMPUTER MENU                   |
-          > |   5) Add a computer             |
-          > |   6) List all computer          |
-          > |   7) Update a computer          |
-          > |   8) Delete a computer          |
+          > | COMPUTER MENU                      |
+          > |   5) Add a computer                |
+          > |   6) List all computer             |
+          > |   7) Update a computer             |
+          > |   8) Delete a computer             |
           > -----------------------------------
-          > | COMPUTER PROGRAM MENU           |
-          > |   9) Add a computer program     |
-          > |   10) List all computer program |
-          > |   11) Update a computer program |
-          > |   12) Delete a computer program |
+          > | COMPUTER PROGRAM MENU              |
+          > |   9) Add a computer program        |
+          > |   10) List programs with computers |
+          > |   11) List computers with programs |
+          > |   12) Update a computer program    |
+          > |   13) Delete a computer program    |
           > -----------------------------------
-          > |   0) Exit                       |
+          > |   0) Exit                          |
           > -----------------------------------
           >""".trimMargin(">"))
     return readNextInt("==>> ")
@@ -64,9 +65,11 @@ fun runMenu() {
             7  -> updateComputer()
             8  -> deleteComputer()
             9  -> addComputerProgram()
-            10  -> listComputerPrograms()
-            11 -> updateComputerProgram()
-            12 -> deleteComputerProgram()
+            10  -> listProgramComputers()
+            11 -> listComputerPrograms()
+            12 -> updateComputerProgram()
+            13 -> deleteComputerProgram()
+            14 -> listAllComputerPrograms()
             0  -> exitApp()
             else -> println("Invalid option entered: ${option}")
         }
@@ -180,10 +183,22 @@ fun addComputerProgram() {
     computerProgramController.addProgramToComputer(programId, computerId)
 }
 
-fun listComputerPrograms() {
-    val computerId = readNextInt("Enter computer id: ")
-    println(computerProgramController.listProgramsInComputer(computerId))
+fun listProgramComputers() {
+    listPrograms()
+    val programId = readNextInt("Enter program id: ")
+    println(computerProgramController.listProgramsAssignedComputers(programId))
 }
+
+fun listComputerPrograms() {
+    listComputers()
+    val computerId = readNextInt("Enter computer id: ")
+    println(computerProgramController.listComputersWithPrograms(computerId))
+}
+
+fun listAllComputerPrograms(){
+    println(" ComputerPrograms: \n${computerProgramController.listAllComputerPrograms()}")
+}
+
 
 fun updateComputerProgram() {
     logger.info { "updateComputerProgram function invoked" }
@@ -197,6 +212,8 @@ fun exitApp(){
     println("Exiting...bye")
     exit(0)
 }
+
+
 
 
 

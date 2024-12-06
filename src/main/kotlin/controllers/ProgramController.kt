@@ -1,5 +1,6 @@
 package controllers
 
+import models.Computer
 import models.Program
 import utils.isValidListIndex
 import utils.readNextFloat
@@ -18,6 +19,10 @@ class ProgramController {
     fun listPrograms(): String =
         if  (programs.isEmpty()) "No programs stored"
         else formatListString(programs)
+
+    fun listOfPrograms(): List<Program> {
+        return programs
+    }
 
     fun numberOfPrograms() = programs.size
 
@@ -54,6 +59,10 @@ class ProgramController {
         programsToFormat
             .joinToString (separator = "\n") { program ->
                 programs.indexOf(program).toString() + ": " + program.toString() }
+
+    fun getProgramId(id: Int): Program? {
+        return programs.find{it.programId == id}
+    }
 }
 
 

@@ -18,6 +18,10 @@ class ComputerController {
         if  (computers.isEmpty()) "No computers stored"
         else formatListString(computers)
 
+    fun listOfComputers(): List<Computer> {
+        return computers
+    }
+
     fun numberOfComputers() = computers.size
 
     fun deleteComputer(indexToDelete: Int): Computer? {
@@ -53,5 +57,9 @@ class ComputerController {
         programsToFormat
             .joinToString (separator = "\n") { computer ->
                 computers.indexOf(computer).toString() + ": " + computer.toString() }
+
+    fun getComputerId(id: Int): Computer? {
+        return computers.find{it.computerId == id}
+    }
 }
 
