@@ -6,6 +6,7 @@ import utils.readNextInt
 import java.lang.System.exit
 import models.Program
 import models.Computer
+import models.ComputerProgram
 import utils.readNextDouble
 import utils.readNextFloat
 import utils.readNextLine
@@ -202,11 +203,41 @@ fun listAllComputerPrograms(){
 
 
 fun updateComputerProgram() {
-    logger.info { "updateComputerProgram function invoked" }
+    //logger.info { "updateComputerProgram function invoked" }
+    listAllComputerPrograms()
+    if (computerProgramController.numberOfComputerPrograms() > 0) {
+        //only ask the user to choose the note if notes exist
+        val indexToUpdate = readNextInt("Enter the index of the note to update: ")
+        if (computerProgramController.isValidIndex(indexToUpdate)) {
+            val programId = readNextInt("Enter program id: ")
+            val computerId = readNextInt("Enter computer id: ")
+
+            //pass the index of the note and the new note details to NoteAPI for updating and check for success.
+            if (computerProgramController.updateComputerProgram(indexToUpdate, ComputerProgram(programId, computerId))){
+                println("Update Successful")
+            } else {
+                println("Update Failed")
+            }
+        } else {
+            println("There are no notes for this index number")
+        }
+    }
 }
 
 fun deleteComputerProgram() {
-    logger.info { "deleteComputerProgram function invoked" }
+    //logger.info { "deleteComputerProgram function invoked" }
+    listAllComputerPrograms()
+    if (computerProgramController.numberOfComputerPrograms() > 0) {
+
+        val indexToDelete = readNextInt("Enter the index of the computer program to delete: ")
+
+        val computerProgramToDelete = computerProgramController.deleteComputerProgram(indexToDelete)
+        if (computerProgramToDelete != null) {
+            println("Delete Successful! Deleted computer program")
+        } else {
+            println("Delete NOT Successful")
+        }
+    }
 }
 
 fun exitApp(){
