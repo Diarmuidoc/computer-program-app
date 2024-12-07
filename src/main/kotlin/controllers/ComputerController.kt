@@ -14,6 +14,10 @@ class ComputerController {
         computers.add(computer)
     }
 
+    fun add(computer: Computer): Boolean {
+        return computers.add(computer)
+    }
+
     fun listComputers(): String =
         if  (computers.isEmpty()) "No computers stored"
         else formatListString(computers)

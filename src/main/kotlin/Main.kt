@@ -6,7 +6,7 @@ import utils.readNextInt
 import java.lang.System.exit
 import models.Program
 import models.Computer
-import models.ComputerProgram
+import utils.readNextDouble
 import utils.readNextFloat
 import utils.readNextLine
 
@@ -43,6 +43,7 @@ fun mainMenu(): Int {
           > |   11) List computers with programs |
           > |   12) Update a computer program    |
           > |   13) Delete a computer program    |
+          > |   14) List all computer programs   |
           > -----------------------------------
           > |   0) Exit                          |
           > -----------------------------------
@@ -132,7 +133,7 @@ fun deleteProgram(){
 fun addComputer() {
     val computerName = readNextLine("Computer Name: ")
     val operatingSystem = readNextLine("Operating System: ")
-    val storage = readNextFloat("Storage: ")
+    val storage = readNextDouble("Storage: ")
     val computer = Computer(0, computerName, operatingSystem, storage)
     computerController.addComputer(computer)
 }
@@ -148,7 +149,7 @@ fun updateComputer() {
         if (computerController.isValidIndex(indexToUpdate)) {
             val computerName = readNextLine("Enter a name for the computer: ")
             val operatingSystem = readNextLine("Enter the operating system for the computer: ")
-            val storage = readNextFloat("Enter the amount of storage: ")
+            val storage = readNextDouble("Enter the amount of storage: ")
 
 
             if (computerController.updateComputer(indexToUpdate, Computer(indexToUpdate, computerName, operatingSystem, storage))){
