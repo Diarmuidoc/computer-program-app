@@ -10,6 +10,11 @@ The functions of the app are:
 - create, read, update and delete an association between computer and program called computerProgram.
 - read computerProgram for specific computerId or programId.
 
+The app contains:
+- Three controllers: ComputerController, ProgramController, and ComputerProgramController.
+- Three models: Computer, Program, and ComputerProgram
+- Main Kotlin file, to be run to run the app
+
 ## App Menu
 The menu of the app is split into 3 parts: Program; Computer; and Computer Program. A user can select a function by entering a the relative number associated with the action on the menu.
 The menu is laid out as follows:
