@@ -16,6 +16,10 @@ class ProgramController {
         programs.add(program)
     }
 
+    fun add(program: Program): Boolean {
+        return programs.add(program)
+    }
+
     fun listPrograms(): String =
         if  (programs.isEmpty()) "No programs stored"
         else formatListString(programs)
