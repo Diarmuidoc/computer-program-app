@@ -13,7 +13,12 @@ The functions of the app are:
 The app contains:
 - Three controllers: ComputerController, ProgramController, and ComputerProgramController.
 - Three models: Computer, Program, and ComputerProgram
-- Main Kotlin file, to be run to run the app
+- Main Kotlin file, to run the app
+
+## To Run the App
+Download the app, this can be done by pressing the "Code" button above and "Download ZIP", once downloaded, unzip.
+Open the app in your prefered development enviroment. 
+Open the main.kt file and run it, this should launch a build menu however if it does not, check the IDE settings.
 
 ## App Menu
 The menu of the app is split into 3 parts: Program; Computer; and Computer Program. A user can select a function by entering a the relative number associated with the action on the menu.
