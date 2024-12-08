@@ -16,12 +16,12 @@ The app contains:
 - Main Kotlin file, to run the app
 
 ## To Run the App
-Download the app, this can be done by pressing the "Code" button above and "Download ZIP", once downloaded, unzip.
-Open the app in your prefered development enviroment. 
+Download the app, this can be done by pressing the "Code" button above and "Download ZIP", once downloaded, unzip.\
+Open the app in your prefered development enviroment.\
 Open the main.kt file and run it, this should launch a build menu however if it does not, check the IDE settings.
 
 ## App Menu
-The menu of the app is split into 3 parts: Program; Computer; and Computer Program. A user can select a function by entering a the relative number associated with the action on the menu.
+The menu of the app is split into 3 parts: Program; Computer; and Computer Program. A user can select a function by entering a the relative number associated with the action on the menu.\
 The menu is laid out as follows:
 ### Program Menu
 - "1) Add a Program" Create a program to add. Entering its name, size and version.
