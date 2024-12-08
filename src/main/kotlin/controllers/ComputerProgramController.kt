@@ -8,28 +8,7 @@ import models.ComputerProgram
 import models.Program
 import utils.isValidListIndex
 
-//From contacts app skeleton
-
-//class ComputerProgramController {
-//    private val computerPrograms = mutableListOf<ComputerProgram>()
-//
-//    fun addProgramToComputer(programId: Int, computerId: Int) {
-//        computerPrograms.add(ComputerProgram(programId, computerId))
-//    }
-//
-//    fun listProgramsInComputer(computerId: Int) = computerPrograms.filter { it.computerId == computerId }
-//
-////    fun addProgramToComputer(programId: Int, computerId: Int) {
-////        if(programController.programs.any {})
-////        computerPrograms.add(ComputerProgram(programId, computerId))
-////    }
-//}
-
-
-
-class ComputerProgramController(
-
-){
+class ComputerProgramController(){
     private val computerPrograms = mutableListOf<ComputerProgram>()
 
     fun addProgramToComputer(computerId: Int, programId: Int){
@@ -39,7 +18,7 @@ class ComputerProgramController(
         if(computer != null && program != null){
             computerPrograms.add(ComputerProgram(programId, computerId))
         }else{
-            throw IllegalArgumentException("Invalid computer or program ID")
+            println("No computer program added")
         }
     }
 
@@ -69,6 +48,7 @@ class ComputerProgramController(
 
     fun updateComputerProgram(indexToUpdate: Int, computerProgram: ComputerProgram?): Boolean{
         val foundComputerProgram = findComputerProgram(indexToUpdate)
+        //Attempt to get update to ensure the values picked belong to actual computers and programs
         //val computer = computerController.getComputerId(computerId)
         //val program = programController.getProgramId(programId)
         //&& (computer != null && program != null)

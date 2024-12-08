@@ -180,7 +180,9 @@ fun deleteComputer() {
 }
 
 fun addComputerProgram() {
+    listPrograms()
     val programId = readNextInt("Enter program id: ")
+    listComputers()
     val computerId = readNextInt("Enter computer id: ")
     computerProgramController.addProgramToComputer(programId, computerId)
 }

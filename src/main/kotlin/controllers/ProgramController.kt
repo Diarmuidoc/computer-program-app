@@ -1,10 +1,8 @@
 package controllers
 
-import models.Computer
 import models.Program
 import utils.isValidListIndex
-import utils.readNextFloat
-import utils.readNextLine
+
 
 class ProgramController {
     private val programs = mutableListOf<Program>()

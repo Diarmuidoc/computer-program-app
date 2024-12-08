@@ -1,7 +1,6 @@
 package controllers
 
 import models.Computer
-import models.Program
 import utils.isValidListIndex
 
 class ComputerController {
