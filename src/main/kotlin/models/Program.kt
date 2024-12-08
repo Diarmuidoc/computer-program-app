@@ -4,6 +4,6 @@ package models
 data class Program(
     var programId: Int,
     var programName: String,
-    var programSize: Float,
+    var programSize: Double,
     var programVersion: String
 )

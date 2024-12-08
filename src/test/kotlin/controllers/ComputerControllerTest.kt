@@ -26,7 +26,7 @@ class ComputerControllerTest {
         jacksPc = Computer(3, "Jacks Computer", "Windows 10", 256.00)
         michaelLaptop = Computer(4, "Michaels Laptop", "Windows 11", 128.00)
 
-        //adding 5 Note to the notes api
+        //adding 5 Computers to the computer controller
         populatedComputers!!.add(diarmuidsPc!!)
         populatedComputers!!.add(geoffsLaptop!!)
         populatedComputers!!.add(gavinsMac!!)
@@ -47,9 +47,9 @@ class ComputerControllerTest {
 
 
     @Nested
-    inner class AddNotes {
+    inner class AddComputers {
         @Test
-        fun `adding a Note to a populated list adds to ArrayList`() {
+        fun `adding a Computer to a populated list adds to ArrayList`() {
             val newComputer = Computer(5, "Test Computer", "Windows 10", 256.00)
             assertEquals(5, populatedComputers!!.numberOfComputers())
             assertTrue(populatedComputers!!.add(newComputer))
@@ -58,7 +58,7 @@ class ComputerControllerTest {
         }
 
         @Test
-        fun `adding a Note to an empty list adds to ArrayList`() {
+        fun `adding a Computer to an empty list adds to ArrayList`() {
             val newComputer = Computer(5, "Test Computer", "Windows 10", 256.00)
             assertEquals(0, emptyComputers!!.numberOfComputers())
             assertTrue(emptyComputers!!.add(newComputer))
@@ -68,7 +68,7 @@ class ComputerControllerTest {
     }
 
     @Nested
-    inner class ListNotes {
+    inner class ListComputers {
 
         @Test
         fun `listComputers returns No Computer Stored message when ArrayList is empty`() {
@@ -79,12 +79,12 @@ class ComputerControllerTest {
         @Test
         fun `listComputers returns Computers when ArrayList has computers stored`() {
             assertEquals(5, populatedComputers!!.numberOfComputers())
-            val notesString = populatedComputers!!.listComputers().lowercase()
-            assertTrue(notesString.contains("diarmuids computer"))
-            assertTrue(notesString.contains("geoffs laptop"))
-            assertTrue(notesString.contains("gavins macbook"))
-            assertTrue(notesString.contains("jacks computer"))
-            assertTrue(notesString.contains("michaels laptop"))
+            val computersString = populatedComputers!!.listComputers().lowercase()
+            assertTrue(computersString.contains("diarmuids computer"))
+            assertTrue(computersString.contains("geoffs laptop"))
+            assertTrue(computersString.contains("gavins macbook"))
+            assertTrue(computersString.contains("jacks computer"))
+            assertTrue(computersString.contains("michaels laptop"))
         }
     }
 
@@ -120,7 +120,7 @@ class ComputerControllerTest {
 
         @Test
         fun `updating a computer that exists returns true and updates`() {
-            //check note 5 exists and check the contents
+            //check computer 5 exists and check the contents
             assertEquals(michaelLaptop, populatedComputers!!.findComputer(4))
             assertEquals("Michaels Laptop", populatedComputers!!.findComputer(4)!!.computerName)
             assertEquals("Windows 11", populatedComputers!!.findComputer(4)!!.operatingSystem)

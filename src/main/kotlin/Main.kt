@@ -81,7 +81,7 @@ fun runMenu() {
 
 fun addProgram(){
     val programName = readNextLine("Name: ")
-    val programSize = readNextFloat("Size: ")
+    val programSize = readNextDouble("Size: ")
     val programVersion = readNextLine("Version: ")
     val program = Program(0, programName, programSize, programVersion)
     programController.addProgram(program)
@@ -99,7 +99,7 @@ fun updateProgram(){
         val indexToUpdate = readNextInt("Enter the index of the program to update: ")
         if (programController.isValidIndex(indexToUpdate)) {
             val programName = readNextLine("Enter a name for the program: ")
-            val programSize = readNextFloat("Enter the size for the program: ")
+            val programSize = readNextDouble("Enter the size for the program: ")
             val programVersion = readNextLine("Enter the version of the Program: ")
             val programId = indexToUpdate
 
